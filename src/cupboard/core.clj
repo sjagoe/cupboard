@@ -251,7 +251,7 @@
   "Like open-cupboard, but always opens the global *cupboard*."
   [& args]
   (when (nil? *cupboard*)
-    (def *cupboard* (apply open-cupboard args))))
+    (def ^:dynamic *cupboard* (apply open-cupboard args))))
 
 
 (defn close-cupboard [cb]
@@ -270,7 +270,7 @@
   (when-not (nil? *cupboard*)
     (try
      (close-cupboard *cupboard*)
-     (finally (def *cupboard* nil)))))
+     (finally (def ^:dynamic *cupboard* nil)))))
 
 
 (defmacro with-open-cupboard [[& args] & body]
